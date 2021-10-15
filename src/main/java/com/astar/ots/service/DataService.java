@@ -2,11 +2,12 @@ package com.astar.ots.service;
 
 import com.astar.ots.entity.Oven;
 import com.astar.ots.entity.Temperature;
+import com.astar.ots.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 @Service
@@ -21,8 +22,12 @@ public class DataService {
     @Async
     public void doInsertHistoricalData() {
 
+        // Delete old data
+        temperatureService.deleteAll();
+        ovenService.deleteAll();
+
+        // Insert new data
         Random random = new Random();
-        Calendar calendar = Calendar.getInstance();
 
         for(int i = 0; i < 10; i++) {
 
@@ -36,13 +41,11 @@ public class DataService {
                 // Insert Temperatures for that Oven
                 for(int j = 0; j < 3; j++) {
 
-                    calendar.add(Calendar.MINUTE, (j * 30));
-
                     Temperature temperature = new Temperature();
                     temperature.setOven(e);
                     temperature.setValue((float) random.nextInt(89) + 10);
                     temperature.setDescription("This is " + (j + 1) + " temperature");
-                    temperature.setReportedOn(calendar.getTime());
+                    temperature.setReportedOn(Util.removeMilliseconds(new Date(new Date().getTime() + ((j * 40) * 60 * 100))));
 
                     temperatureService.save(temperature);
                 }

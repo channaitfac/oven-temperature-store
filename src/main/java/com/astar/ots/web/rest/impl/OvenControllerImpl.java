@@ -4,7 +4,6 @@ import com.astar.ots.entity.Oven;
 import com.astar.ots.entity.Temperature;
 import com.astar.ots.model.OvenWithoutTemperature;
 import com.astar.ots.service.OvenService;
-import com.astar.ots.service.TemperatureService;
 import com.astar.ots.util.Constants;
 import com.astar.ots.util.Util;
 import com.astar.ots.web.request.OvenTemperaturesRequest;
@@ -41,9 +40,6 @@ public class OvenControllerImpl implements OvenController {
     @Autowired
     private OvenService ovenService;
 
-    @Autowired
-    private TemperatureService temperatureService;
-
     @Override
     public ResponseEntity getAllOvensWithoutTemperatures() {
 
@@ -78,22 +74,29 @@ public class OvenControllerImpl implements OvenController {
             final long ovenId = Long.parseLong(ovenTemperaturesRequest.getOvenId());
 
             // Get Oven with temperatures
-            Optional<Oven> oven = ovenService.getById(ovenId);
+            try {
 
-            if(oven.isPresent()) {
+                Optional<Oven> oven = ovenService.getById(ovenId);
 
-                TemperaturesResponse response = new TemperaturesResponse(oven.get().getTemperatures());
-                log.info("Successful response : {}" , response);
-                return new ResponseEntity<>(response, HttpStatus.OK);
+                if(oven.isPresent()) {
 
-            } else {
-                log.error(Constants.ErrorMessages.CANNOT_FOUND_OVEN_FOR_ID);
+                    TemperaturesResponse response = new TemperaturesResponse(oven.get().getTemperatures());
+                    log.info("Successful response : {}" , response);
+                    return new ResponseEntity<>(response, HttpStatus.OK);
+
+                } else {
+                    log.error(Constants.ErrorMessages.CANNOT_FOUND_OVEN_FOR_ID);
+                    return new ResponseEntity<>(Constants.ErrorMessages.CANNOT_FOUND_OVEN_FOR_ID, HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+
+            } catch (Exception e) {
+                log.error("Exception occurred while finding oven for OvenID - {} : {}", ovenId , e.getMessage());
                 return new ResponseEntity<>(Constants.ErrorMessages.CANNOT_FOUND_OVEN_FOR_ID, HttpStatus.INTERNAL_SERVER_ERROR);
             }
 
         } catch (Exception e) {
             log.error("Request parameter validation error: {}", e.getMessage());
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(Constants.ErrorMessages.INVALID_PARAMETER, HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -142,12 +145,14 @@ public class OvenControllerImpl implements OvenController {
 
                 if(ovenList.isPresent()) {
 
+                    // Get all available ovens and filter temperatures based on given time period
                     ovenList.get().forEach(oven -> {
                         if(oven.getTemperatures() != null) {
                             oven.setTemperatures(
                                     oven.getTemperatures().stream()
-                                            .filter(temperature -> temperature.getReportedOn().after(start))
-                                            .filter(temperature -> temperature.getReportedOn().before(end))
+                                            .filter(temperature ->
+                                                    ((temperature.getReportedOn().getTime() >= start.getTime())
+                                                            && (temperature.getReportedOn().getTime() <= end.getTime())))
                                             .collect(Collectors.toList()));
                         }
                     });
@@ -167,7 +172,6 @@ public class OvenControllerImpl implements OvenController {
             }
 
         } else {
-
             log.error(Constants.ErrorMessages.INVALID_PARAMETER);
             return new ResponseEntity<>(Constants.ErrorMessages.INVALID_PARAMETER, HttpStatus.BAD_REQUEST);
         }

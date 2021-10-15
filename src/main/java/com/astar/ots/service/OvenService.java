@@ -25,4 +25,8 @@ public class OvenService {
     public Optional<List<Oven>> findAll() {
         return Optional.ofNullable(ovenRepository.findAll());
     }
+
+    public void deleteAll() {
+        ovenRepository.deleteAll();
+    }
 }
