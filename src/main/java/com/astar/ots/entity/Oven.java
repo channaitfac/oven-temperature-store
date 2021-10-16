@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "oven")
+@NoArgsConstructor
 @JsonPropertyOrder({"id", "code", "description", "temperatures"})
 public class Oven implements Serializable {
 

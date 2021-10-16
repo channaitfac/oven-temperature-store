@@ -23,6 +23,7 @@ public class OvenTemperatureStoreApplication implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) {
-		dataService.doInsertHistoricalData();
+		dataService.doInsertAppUsers();
+		dataService.doInsertOvenTemperatureHistoricalData();
 	}
 }

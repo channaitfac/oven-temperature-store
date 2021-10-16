@@ -7,6 +7,12 @@ server:
 
 spring:
   application:
-    name:  oven-temperature-store
+    name: oven-temperature-store
   profiles:
     active: DEV
+
+security:
+  jwt:
+    token:
+      secret-key: secret-key
+      expire-length: 600000 # 10 minutes
