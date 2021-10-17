@@ -16,3 +16,7 @@ security:
     token:
       secret-key: secret-key
       expire-length: 600000 # 10 minutes
+
+# Application properties
+app:
+  polling-result-file-path: ovens_temperatures.json

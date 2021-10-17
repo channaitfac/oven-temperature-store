@@ -10,10 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Random;
+import java.util.*;
+
+import static com.astar.ots.util.Constants.UserDetail.*;
 
 @Slf4j
 @Service
@@ -32,10 +31,10 @@ public class DataService {
     public void doInsertAppUsers() {
 
         User admin = new User();
-        admin.setUsername("admin");
-        admin.setPassword("admin");
-        admin.setEmail("admin@email.com");
-        admin.setRoles(new ArrayList<>(Arrays.asList(Role.ROLE_ADMIN)));
+        admin.setUsername(USERNAME);
+        admin.setPassword(PASSWORD);
+        admin.setEmail(EMAIL);
+        admin.setRoles(Collections.singletonList(Role.ROLE_ADMIN));
 
         try {
             userService.signup(admin);
