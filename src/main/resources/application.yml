@@ -20,3 +20,4 @@ security:
 # Application properties
 app:
   polling-result-file-path: ovens_temperatures.json
+  polling-frequency: 120000 # 2 minutes
