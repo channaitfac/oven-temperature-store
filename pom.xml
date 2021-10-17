@@ -3,6 +3,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<!-- ## Project detail ## -->
+	<groupId>com.astar.ots</groupId>
+	<artifactId>oven-temperature-store</artifactId>
+	<version>0.0.1</version>
+	<name>Oven Temperature Store</name>
+	<description>REST API application for storing and reading Oven temperature values</description>
+
+	<!-- ## Spring Boot parent ## -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -10,12 +18,7 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>com.astar.ots</groupId>
-	<artifactId>oven-temperature-store</artifactId>
-	<version>0.0.1</version>
-	<name>Oven Temperature Store</name>
-	<description>REST API application for storing and reading Oven temperature values</description>
-
+	<!-- ## Project properties ## -->
 	<properties>
 		<java.version>11</java.version>
 		<quartz.version>2.3.2</quartz.version>
@@ -28,9 +31,10 @@
 		<jackson.datatype.version>2.13.0</jackson.datatype.version>
 	</properties>
 
+	<!-- ## Dependencies ## -->
 	<dependencies>
 
-		<!-- Spring boot starters -->
+		<!-- Spring Boot starter kit -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -145,7 +149,9 @@
 	</dependencies>
 
 	<build>
+		<!-- ## Plugins ## -->
 		<plugins>
+			<!-- Spring Boot maven -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -153,6 +159,7 @@
 		</plugins>
 	</build>
 
+	<!-- ## Repositories ## -->
 	<repositories>
 		<repository>
 			<id>spring-milestones</id>
