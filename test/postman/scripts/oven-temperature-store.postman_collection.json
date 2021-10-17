@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "30ecde04-aba2-433f-9e59-1873e34fdb2b",
+		"name": "oven-temperature-store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:44391/oven-temperature-store/users/signin",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:44391/oven-temperature-store/users/signin",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "44391",
+					"path": [
+						"oven-temperature-store",
+						"users",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:44391/oven-temperature-store/ovens",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOlt7ImF1dGhvcml0eSI6IlJPTEVfQURNSU4ifV0sImlhdCI6MTYzNDQ4ODA5OSwiZXhwIjoxNjM0NDg4Njk5fQ.nDdSyk_sbykv2vhrmZvUgsRo93S81Xa8MMpWD7JHbLM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:44391/oven-temperature-store/ovens",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "44391",
+					"path": [
+						"oven-temperature-store",
+						"ovens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:44391/oven-temperature-store/ovens/temperature",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOlt7ImF1dGhvcml0eSI6IlJPTEVfQURNSU4ifV0sImlhdCI6MTYzNDQ4ODA5OSwiZXhwIjoxNjM0NDg4Njk5fQ.nDdSyk_sbykv2vhrmZvUgsRo93S81Xa8MMpWD7JHbLM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"ovenId\": \"37\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:44391/oven-temperature-store/ovens/temperature",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "44391",
+					"path": [
+						"oven-temperature-store",
+						"ovens",
+						"temperature"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:44391/oven-temperature-store/oven-temperatures",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOlt7ImF1dGhvcml0eSI6IlJPTEVfQURNSU4ifV0sImlhdCI6MTYzNDQ4ODA5OSwiZXhwIjoxNjM0NDg4Njk5fQ.nDdSyk_sbykv2vhrmZvUgsRo93S81Xa8MMpWD7JHbLM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"startDate\": \"\", \"endDate\": \"\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:44391/oven-temperature-store/oven-temperatures",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "44391",
+					"path": [
+						"oven-temperature-store",
+						"oven-temperatures"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:44391/oven-temperature-store/oven-temperatures",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOlt7ImF1dGhvcml0eSI6IlJPTEVfQURNSU4ifV0sImlhdCI6MTYzNDQ4ODA5OSwiZXhwIjoxNjM0NDg4Njk5fQ.nDdSyk_sbykv2vhrmZvUgsRo93S81Xa8MMpWD7JHbLM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"startDate\": \"2021-10-16 10:28:36\", \"endDate\": \"2021-10-16 23:28:38\"} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:44391/oven-temperature-store/oven-temperatures",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "44391",
+					"path": [
+						"oven-temperature-store",
+						"oven-temperatures"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

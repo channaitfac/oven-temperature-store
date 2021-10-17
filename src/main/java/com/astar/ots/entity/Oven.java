@@ -43,7 +43,7 @@ public class Oven implements Serializable {
     private Date modifiedOn;
 
     @JsonProperty(value = "temperatures")
-    @OneToMany(mappedBy = "oven", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "oven", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Temperature> temperatures;
 
     @PrePersist

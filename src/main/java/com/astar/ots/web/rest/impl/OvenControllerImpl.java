@@ -17,6 +17,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +42,7 @@ public class OvenControllerImpl implements OvenController {
     private OvenService ovenService;
 
     @Override
+    @Transactional
     public ResponseEntity getAllOvensWithoutTemperatures() {
 
         log.debug("API called: Get all ovens without temperatures");
@@ -63,6 +65,7 @@ public class OvenControllerImpl implements OvenController {
     }
 
     @Override
+    @Transactional
     public ResponseEntity getTemperatureForOven(OvenTemperaturesRequest ovenTemperaturesRequest) {
 
         log.debug("API called: Get temperature for oven - Request parameters: {}", ovenTemperaturesRequest);
@@ -101,6 +104,7 @@ public class OvenControllerImpl implements OvenController {
     }
 
     @Override
+    @Transactional
     public ResponseEntity getAllOvensWithTemperatures(OvensTemperaturesRequest ovensTemperaturesRequest) {
 
         log.debug("API called: Get all ovens with their temperatures for  - Request parameters: {}", ovensTemperaturesRequest);
