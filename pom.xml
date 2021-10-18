@@ -26,6 +26,7 @@
 		<h2database.version>1.4.200</h2database.version>
 		<quartz.jobs.version>2.2.3</quartz.jobs.version>
 		<jsonwebtoken.version>0.9.1</jsonwebtoken.version>
+		<junit.vintage.engine>5.3.2</junit.vintage.engine>
 		<junit-jupiter.version>5.3.2</junit-jupiter.version>
 		<projectlombok.version>1.18.22</projectlombok.version>
 		<jackson.datatype.version>2.13.0</jackson.datatype.version>
@@ -128,22 +129,9 @@
 
 		<!-- Test -->
 		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter</artifactId>
-			<version>5.7.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>3.3.3</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
+			<version>${junit.vintage.engine}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
