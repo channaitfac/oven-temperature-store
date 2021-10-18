@@ -30,6 +30,17 @@
 		       
     Note:- User signup, Ovens and related Temperatures related data will populate on application startup. 	 
           
+    
+	Documents
+	=================================
+	* Refer the deployment diagram in "$oven-temperature-store\doc\deployment_diagram.jpg"
+	
+  
+	System test with Postman
+	=================================
+	* Refer the Postman related steps show with images in "$oven-temperature-store\test\postman"
+	* Import the Postman related scripts in "$oven-temperature-store\test\postman\scripts\oven-temperature-store.postman_collection.json"  
+	
 
 	Software versions used
 	=================================
@@ -56,9 +67,4 @@
 	=================================
 	* Go to project root "$oven-temperature-store" and execute the REST service with "mvn spring-boot:run" maven command
 	      
-  
-	System test with Postman
-	=================================
-	* Refer the Postman related steps show with images in "$oven-temperature-store\test\postman"
-	* Import the Postman related scripts in "$oven-temperature-store\test\postman\scripts\oven-temperature-store.postman_collection.json"  
 	
